@@ -23,7 +23,7 @@ public class TableTest5_TimeAndWindow {
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
 
         // 2. 读入文件数据，得到DataStream
-        DataStream<String> inputStream = env.readTextFile("D:\\Projects\\BigData\\FlinkTutorial\\src\\main\\resources\\sensor.txt");
+        DataStream<String> inputStream = env.readTextFile("src/main/resources/sensor.txt");
 
         // 3. 转换成POJO
         DataStream<SensorReading> dataStream = inputStream.map(line -> {

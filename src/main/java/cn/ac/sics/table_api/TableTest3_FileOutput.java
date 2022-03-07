@@ -7,7 +7,6 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.table.descriptors.Csv;
 import org.apache.flink.table.descriptors.FileSystem;
 import org.apache.flink.table.descriptors.Schema;
-import org.apache.flink.types.Row;
 
 public class TableTest3_FileOutput {
   public static void main(String[] args) throws Exception {
@@ -32,9 +31,9 @@ public class TableTest3_FileOutput {
     Table inputTable = tableEnv.from("inputTable");
     inputTable.printSchema();
 
-
     // 3. 简单转换
-    Table resultTable = tableEnv.sqlQuery("select id, temperature from inputTable where id == 'sensor_1'");
+    Table resultTable =
+        tableEnv.sqlQuery("select id, temperature from inputTable where id = 'sensor_1'");
 
     // 4. 输出到文件
     // 连接外部文件注册输出表
@@ -43,13 +42,9 @@ public class TableTest3_FileOutput {
         .connect(new FileSystem().path(outputPath))
         .withFormat(new Csv())
         .withSchema(
-            new Schema()
-                .field("id", DataTypes.STRING())
-                .field("temperature", DataTypes.DOUBLE()))
+            new Schema().field("id", DataTypes.STRING()).field("temperature", DataTypes.DOUBLE()))
         .createTemporaryTable("outputTable");
 
     resultTable.executeInsert("outputTable");
   }
 }
-
-
