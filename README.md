@@ -1,6 +1,6 @@
 # Flink Tutorial
 
-**记录 Flink 及 Flink CDC API 的使用**
+**记录 Flink、 Flink CDC 及 Debezium Engine API 的使用**
 
 ## 相关资源：
 [Flink 中文社区](https://flink-learning.org.cn/)
@@ -13,4 +13,4 @@
 
 [Flink CDC 教程](https://www.bilibili.com/video/BV1wL4y1Y7Xu)
 
-
+[Debezium 1.8 文档](https://debezium.io/documentation/reference/1.8/)
